@@ -12,7 +12,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 22'%3E%3Crect x='7.2' width='1.6' height='7' fill='%230F1B2D'/%3E%3Cpath d='M2 7h12L8 22z' fill='%23B8901F'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="prova.css?v=3">
+<link rel="stylesheet" href="prova.css?v=4">
 <style>
 :root{--ink:#0F1B2D;--ink2:#3B4757;--muted:#6B7480;--paper:#FBF9F4;--sand:#F1ECE1;--green:#0E8A63;--green2:#4FD1A5;--green-soft:#E3F2EC;--red:#D64545;--gold:#B8901F;--line:#E2DCCF;--navy2:#17263B}
 *{box-sizing:border-box}
@@ -374,9 +374,23 @@ footer b{color:#FBF9F4}
 
 <div class="sticky"><a class="btn" href="#oferta">Quero o guia por R$ <span data-preco="ebook">29,90</span></a></div>
 
-<script src="config.js?v=3" data-pixel data-visita defer></script>
+<div class="prumo-chat">
+  <button type="button" class="prumo-chat-toggle" id="prumo-chat-toggle" aria-controls="prumo-chat-panel" aria-expanded="false" aria-label="Abrir assistente virtual">
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H6l-3 2v-6.5A7.5 7.5 0 1 1 20 11.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 11h8M8 14h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <span>Fale com a Prumo</span>
+  </button>
+  <section class="prumo-chat-panel" id="prumo-chat-panel" aria-label="Assistente virtual da Prumo Finanças" hidden>
+    <header class="prumo-chat-head"><span class="prumo-chat-status"></span><div><strong>Assistente Prumo</strong><small>Educação financeira</small></div><button type="button" id="prumo-chat-close" aria-label="Fechar chat">×</button></header>
+    <div class="prumo-chat-log" id="prumo-chat-log" role="log" aria-live="polite"></div>
+    <form class="prumo-chat-form" id="prumo-chat-form"><label class="sr-only" for="prumo-chat-input">Digite sua mensagem</label><input id="prumo-chat-input" maxlength="1800" autocomplete="off" placeholder="Digite sua dúvida…" required><button id="prumo-chat-send" type="submit">Enviar</button></form>
+    <p class="prumo-chat-disclaimer">Assistente com IA para dúvidas gerais. Não fornece recomendação individual de investimentos.</p>
+  </section>
+</div>
+
+<script src="config.js?v=4" data-pixel data-visita defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="checkout.js?v=3" defer></script>
-<script src="prova.js?v=3" defer></script>
+<script src="prova.js?v=4" defer></script>
+<script src="chat.js?v=1" defer></script>
 </body>
 </html>

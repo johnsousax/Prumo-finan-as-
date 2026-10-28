@@ -15,3 +15,5 @@ verify_jwt = false
 verify_jwt = false
 [functions.tombo-arquivos]
 verify_jwt = false
+[functions.tombo-chat]
+verify_jwt = false
