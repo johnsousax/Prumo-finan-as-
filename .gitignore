@@ -1,0 +1,7 @@
+.env
+.env.*
+*.pdf
+*.xlsx
+node_modules/
+.DS_Store
+supabase/.temp/

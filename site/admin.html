@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Painel — Depois do Tombo</title>
+<meta name="theme-color" content="#0F1B2D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 22'%3E%3Crect x='7.2' width='1.6' height='7' fill='%230F1B2D'/%3E%3Cpath d='M2 7h12L8 22z' fill='%23B8901F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<section id="login" class="login" hidden>
+  <form id="login-form" class="login-card" autocomplete="on">
+    <div class="marca"><svg width="14" height="20" viewBox="0 0 16 22" aria-hidden="true"><rect x="7.2" width="1.6" height="7" fill="#0F1B2D"/><path d="M2 7h12L8 22z" fill="#B8901F"/></svg>Prumo Finanças</div>
+    <h1>Painel da oferta</h1>
+    <p class="sub">Depois do Tombo · área restrita</p>
+    <label class="campo">Senha<input type="password" name="senha" autocomplete="current-password" required autofocus></label>
+    <button class="btn" type="submit">Entrar</button>
+    <p class="erro" id="login-erro" role="alert"></p>
+  </form>
+</section>
+
+<!-- APP -->
+<div id="app" class="app" hidden>
+  <aside class="lado">
+    <div class="marca claro"><svg width="14" height="20" viewBox="0 0 16 22" aria-hidden="true"><rect x="7.2" width="1.6" height="7" fill="#FBF9F4"/><path d="M2 7h12L8 22z" fill="#B8901F"/></svg>Painel</div>
+    <nav id="abas" class="abas" aria-label="Seções do painel">
+      <button data-aba="geral" aria-current="page">Visão geral</button>
+      <button data-aba="pedidos">Pedidos</button>
+      <button data-aba="clientes">Clientes</button>
+      <button data-aba="oferta">Oferta e preços</button>
+      <button data-aba="pagamento">Pagamento</button>
+      <button data-aba="pixel">Pixel e anúncios</button>
+      <button data-aba="config">Configurações</button>
+    </nav>
+    <div class="lado-pe">
+      <a href="/" target="_blank" rel="noopener">Abrir o site ↗</a>
+      <button id="sair" class="link">Sair</button>
+    </div>
+  </aside>
+
+  <main class="conteudo">
+    <!-- VISÃO GERAL -->
+    <section data-painel="geral">
+      <header class="topo">
+        <div><h1>Visão geral</h1><p class="sub" id="periodo-txt">Últimos 14 dias</p></div>
+        <div class="periodo">
+          <div class="chips" id="presets">
+            <button data-dias="1">Hoje</button><button data-dias="7">7 dias</button><button data-dias="14" class="on">14 dias</button><button data-dias="30">30 dias</button><button data-dias="90">90 dias</button>
+          </div>
+          <div class="datas"><input type="date" id="de" aria-label="De"><span>até</span><input type="date" id="ate" aria-label="Até"><button class="btn mini" id="aplicar">Aplicar</button></div>
+        </div>
+      </header>
+      <div class="kpis" id="kpis"></div>
+      <div class="grade2">
+        <article class="cartao largo">
+          <div class="cartao-topo"><h2>Faturamento por dia</h2><span class="sub" id="graf-total"></span></div>
+          <div class="grafico" id="grafico"></div>
+        </article>
+        <article class="cartao">
+          <div class="cartao-topo"><h2>Funil da oferta</h2></div>
+          <div id="funil" class="funil"></div>
+        </article>
+      </div>
+      <div class="grade2">
+        <article class="cartao"><div class="cartao-topo"><h2>Produtos e order bumps</h2></div><div id="t-produtos"></div></article>
+        <article class="cartao"><div class="cartao-topo"><h2>Por origem (utm_source)</h2></div><div id="t-origem"></div></article>
+      </div>
+      <article class="cartao"><div class="cartao-topo"><h2>Por campanha (utm_campaign)</h2></div><div id="t-campanha"></div></article>
+    </section>
+
+    <!-- PEDIDOS -->
+    <section data-painel="pedidos" hidden>
+      <header class="topo">
+        <div><h1>Pedidos</h1><p class="sub">Compras pagas, Pix não pagos e todo o resto. Abandonos dá para recuperar pelo WhatsApp.</p></div>
+        <button class="btn ghost" id="exp-pedidos">Exportar CSV</button>
+      </header>
+      <div class="barra">
+        <div class="chips" id="filtros">
+          <button data-f="todos" class="on">Todos</button><button data-f="pagos">Pagos</button><button data-f="abandonados">Não pagaram o Pix</button><button data-f="aguardando">Aguardando</button><button data-f="expirados">Expirados</button><button data-f="falhas">Falhas</button><button data-f="estornados">Estornados</button>
+        </div>
+        <input type="search" id="busca-pedidos" placeholder="Buscar nome, e-mail, pedido ou WhatsApp">
+      </div>
+      <div class="cartao sem-pad"><div id="t-pedidos"></div></div>
+      <div class="paginacao" id="pag-pedidos"></div>
+    </section>
+
+    <!-- CLIENTES -->
+    <section data-painel="clientes" hidden>
+      <header class="topo">
+        <div><h1>Clientes</h1><p class="sub">Todo mundo que preencheu o checkout, agrupado por e-mail.</p></div>
+        <button class="btn ghost" id="exp-clientes">Exportar CSV</button>
+      </header>
+      <div class="barra"><input type="search" id="busca-clientes" placeholder="Buscar nome, e-mail ou WhatsApp"></div>
+      <div class="cartao sem-pad"><div id="t-clientes"></div></div>
+      <div class="paginacao" id="pag-clientes"></div>
+    </section>
+
+    <!-- OFERTA -->
+    <section data-painel="oferta" hidden>
+      <header class="topo"><div><h1>Oferta e preços</h1><p class="sub">Os preços valem para o site e para o Pix em até 1 minuto. O produto principal não pode ser desativado.</p></div></header>
+      <div id="produtos" class="produtos"></div>
+      <div class="acoes"><button class="btn" id="salvar-produtos">Salvar preços e produtos</button><span class="msg" id="msg-produtos" role="status"></span></div>
+
+      <article class="cartao">
+        <div class="cartao-topo"><h2>Prova social</h2></div>
+        <p class="sub">O contador de compras e os avisos de “acabou de comprar” só aparecem no site quando as vendas reais passarem deste número.</p>
+        <div class="linha-form">
+          <label class="campo curto">Mínimo de vendas<input type="number" id="prova-minimo" min="1" max="100000" step="1"></label>
+          <button class="btn ghost" id="salvar-prova">Salvar</button>
+          <a class="btn ghost" href="/?previa=1#oferta" target="_blank" rel="noopener">Ver prévia com números simulados ↗</a>
+        </div>
+        <span class="msg" id="msg-prova" role="status"></span>
+      </article>
+    </section>
+
+    <!-- PAGAMENTO -->
+    <section data-painel="pagamento" hidden>
+      <header class="topo"><div><h1>Pagamento</h1><p class="sub">Escolha o gateway do Pix. Antes de trocar, o painel testa as credenciais; se falhar, nada muda. Pedidos já criados continuam no gateway em que nasceram.</p></div></header>
+      <div class="gateways">
+        <label class="gw"><input type="radio" name="gw" value="syncpay"><span class="gw-box"><b>SyncPay</b><small id="gw-sync-info"></small></span></label>
+        <label class="gw"><input type="radio" name="gw" value="mercadopago"><span class="gw-box"><b>Mercado Pago</b><small id="gw-mp-info"></small></span></label>
+      </div>
+      <article class="cartao">
+        <div class="cartao-topo"><h2>Credenciais da SyncPay</h2><button class="btn mini ghost" data-testar="syncpay">Testar</button></div>
+        <p class="sub">Deixe em branco para continuar usando as credenciais que já estão no banco.</p>
+        <div class="grade-campos">
+          <label class="campo">Client ID<input id="sync-id" autocomplete="off" placeholder="Não alterar"></label>
+          <label class="campo">Client Secret<input id="sync-secret" type="password" autocomplete="new-password" placeholder="Não alterar"></label>
+        </div>
+      </article>
+      <article class="cartao">
+        <div class="cartao-topo"><h2>Credenciais do Mercado Pago</h2><button class="btn mini ghost" data-testar="mercadopago">Testar</button></div>
+        <p class="sub">No Mercado Pago: Seu negócio → Configurações → Credenciais → <b>Credenciais de produção</b> → Access Token (começa com APP_USR-). O aviso de pagamento é configurado sozinho em cada Pix.</p>
+        <label class="campo">Access Token<input id="mp-token" type="password" autocomplete="new-password" placeholder="Não alterar"></label>
+      </article>
+      <div class="acoes"><button class="btn" id="salvar-pagamento">Salvar e ativar gateway escolhido</button><span class="msg" id="msg-pagamento" role="status"></span></div>
+    </section>
+
+    <!-- PIXEL -->
+    <section data-painel="pixel" hidden>
+      <header class="topo"><div><h1>Pixel e anúncios</h1><p class="sub">Com o Pixel o site envia PageView, ViewContent, InitiateCheckout e Purchase. Com o token da API de Conversões, a compra também é enviada pelo servidor na hora em que o Pix cai — mesmo se a pessoa pagar pelo app do banco e não voltar ao site.</p></div></header>
+      <article class="cartao">
+        <div class="grade-campos">
+          <label class="campo">ID do Pixel (Conjunto de dados)<input id="px-id" inputmode="numeric" placeholder="Ex.: 123456789012345"></label>
+          <label class="campo">Token da API de Conversões <span class="opt" id="capi-estado"></span><input id="px-token" type="password" autocomplete="new-password" placeholder="Não alterar"></label>
+          <label class="campo">Código de teste (opcional)<input id="px-teste" placeholder="TEST12345"></label>
+        </div>
+        <p class="sub">Onde achar: Gerenciador de Eventos → seu conjunto de dados → Configurações. O ID fica no topo; o token, em “API de Conversões → Gerar token de acesso”. O código de teste fica na aba “Testar eventos”.</p>
+        <div class="acoes">
+          <button class="btn" id="salvar-pixel">Salvar</button>
+          <button class="btn ghost" id="testar-pixel">Enviar compra de teste</button>
+          <button class="btn ghost" id="remover-capi" hidden>Remover token</button>
+          <span class="msg" id="msg-pixel" role="status"></span>
+        </div>
+      </article>
+      <article class="cartao">
+        <div class="cartao-topo"><h2>Link para os anúncios</h2></div>
+        <p class="sub">Use este link no Meta. As vendas aparecem separadas por origem e campanha na Visão geral.</p>
+        <div class="copia"><code id="link-ads"></code><button class="btn mini ghost" data-copiar="link-ads">Copiar</button></div>
+      </article>
+    </section>
+
+    <!-- CONFIGURAÇÕES -->
+    <section data-painel="config" hidden>
+      <header class="topo"><div><h1>Configurações</h1><p class="sub">Estes dados aparecem no rodapé do site, na página de privacidade e nos e-mails de entrega.</p></div></header>
+      <article class="cartao">
+        <div class="cartao-topo"><h2>Suporte e empresa</h2></div>
+        <div class="grade-campos">
+          <label class="campo">Contato de suporte (e-mail ou WhatsApp)<input id="cfg-suporte" maxlength="120" placeholder="suporte@seudominio.com ou (98) 99999-9999"></label>
+          <label class="campo">Razão social ou nome<input id="cfg-nome" maxlength="120"></label>
+          <label class="campo">CNPJ ou CPF<input id="cfg-doc" inputmode="numeric" maxlength="18"></label>
+          <label class="campo">Endereço<input id="cfg-end" maxlength="200" placeholder="Rua, número, cidade/UF"></label>
+        </div>
+        <div class="acoes"><button class="btn" id="salvar-config">Salvar</button><span class="msg" id="msg-config" role="status"></span></div>
+      </article>
+      <article class="cartao">
+        <div class="cartao-topo"><h2>Trocar senha do painel</h2></div>
+        <div class="grade-campos">
+          <label class="campo">Senha atual<input id="senha-atual" type="password" autocomplete="current-password"></label>
+          <label class="campo">Nova senha (10+ caracteres, letras e números)<input id="senha-nova" type="password" autocomplete="new-password"></label>
+        </div>
+        <div class="acoes"><button class="btn ghost" id="trocar-senha">Trocar senha</button><span class="msg" id="msg-senha" role="status"></span></div>
+      </article>
+    </section>
+  </main>
+</div>
+
+<div id="aviso" class="aviso" role="status" aria-live="polite"></div>
+<div id="dica" class="dica" hidden></div>
+<script src="admin.js" defer></script>
+</body>
+</html>

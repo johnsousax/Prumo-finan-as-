@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Sua área de acesso — Prumo Finanças</title>
+<meta name="theme-color" content="#0F1B2D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 22'%3E%3Crect x='7.2' width='1.6' height='7' fill='%230F1B2D'/%3E%3Cpath d='M2 7h12L8 22z' fill='%23B8901F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0F1B2D;--ink2:#3B4757;--muted:#6B7480;--paper:#FBF9F4;--sand:#F1ECE1;--green:#0E8A63;--green2:#4FD1A5;--green-soft:#E3F2EC;--red:#D64545;--red-soft:#FBE9E9;--gold:#B8901F;--line:#E2DCCF}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Lora,Georgia,serif;line-height:1.15;letter-spacing:-.01em;margin:0}
+a{color:var(--green)}
+.top{background:var(--ink);color:#FBF9F4;padding:18px 0}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.18em;font-size:12px;text-transform:uppercase}
+.hello{font-family:Lora,serif;font-size:28px;margin:22px 0 4px}
+.sub{color:#C9CFD8;font-size:15px;margin:0}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:18px 0 4px;scrollbar-width:none}
+.tabs button{flex:0 0 auto;border:1.5px solid #27354A;background:#17263B;color:#C9CFD8;font:inherit;font-size:14px;font-weight:700;padding:10px 14px;border-radius:12px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:#FBF9F4;color:var(--ink);border-color:#FBF9F4}
+.bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center;margin:22px 0 6px}
+.bar .tip{font-size:13px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;border:0;font:inherit;font-weight:700;font-size:15px;padding:12px 18px;border-radius:12px;cursor:pointer;text-decoration:none}
+.btn[aria-disabled="true"]{opacity:.6;pointer-events:none}
+.btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+main{padding-bottom:60px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px 30px;margin-top:12px}
+.panel[hidden]{display:none}
+.state{text-align:center;padding:60px 20px}
+.state h2{font-size:26px;margin-bottom:10px}
+/* tipografia do conteúdo */
+.kicker{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin:0 0 8px}
+.panel h1{font-size:32px;margin:0 0 14px}
+.panel h2{font-size:22px;margin:30px 0 10px}
+.panel h3{font-size:17px;margin:18px 0 6px}
+.panel p{margin:0 0 12px}
+.lead{font-size:19px;color:var(--ink2)}
+.rule{height:3px;width:56px;background:var(--green);border-radius:2px;margin:0 0 18px}
+.panel ul,.panel ol{padding-left:22px;margin:0 0 14px}.panel li{margin-bottom:6px}
+.chapter{padding-bottom:28px;margin-bottom:28px;border-bottom:1px solid var(--line)}
+.chapter:last-child{border-bottom:0}
+.box{border-radius:14px;padding:16px 18px;margin:16px 0}
+.box.green{background:var(--green-soft);border-left:4px solid var(--green)}
+.box.red{background:var(--red-soft);border-left:4px solid var(--red)}
+.box.sand{background:var(--sand)}
+.box h3{margin-top:0}.box p:last-child{margin-bottom:0}
+.small{font-size:14px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.stat{background:var(--sand);border-radius:14px;padding:14px}
+.stat b{display:block;font-family:Lora,serif;font-size:26px;line-height:1.1}
+.stat span{display:block;font-size:13px;color:var(--ink2);margin-top:4px;line-height:1.35}
+.stat.red b{color:var(--red)}.stat.green b{color:var(--green)}
+.figure{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px;margin:16px 0;color:var(--ink)}
+.caption{font-size:13px;color:var(--muted);margin:6px 0 0}
+.tbl{overflow-x:auto;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{text-align:left;background:var(--ink);color:#fff;padding:9px 10px;font-weight:700}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+tr.total td{font-weight:700;background:var(--sand)}
+.fill td{height:38px}
+.quote{font-family:Lora,serif;font-size:20px;line-height:1.4;border-left:3px solid var(--gold);padding:4px 0 4px 16px;margin:20px 0}
+.pillar{display:flex;gap:14px;align-items:flex-start;margin:14px 0}
+.letter{flex:0 0 46px;height:46px;border-radius:12px;background:var(--ink);color:#fff;font-family:Lora,serif;font-weight:700;font-size:22px;display:flex;align-items:center;justify-content:center}
+.pillar h3{margin:0}.pillar p{margin:2px 0 0;color:var(--ink2)}
+.toc{list-style:none;padding:0!important}.toc li{display:flex;gap:14px;padding:9px 0;border-bottom:1px solid var(--line);margin:0}
+.toc .n{font-family:Lora,serif;font-weight:700;color:var(--green);width:28px}
+.check{list-style:none;padding:0!important}
+.check li{padding:8px 0 8px 32px;border-bottom:1px dashed var(--line);position:relative;margin:0;cursor:pointer}
+.check li:before{content:"";position:absolute;left:2px;top:11px;width:16px;height:16px;border:1.8px solid var(--ink);border-radius:5px}
+.check li.ok{color:var(--muted);text-decoration:line-through}
+.check li.ok:before{background:var(--green);border-color:var(--green)}
+.week{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin:18px 0 4px}
+/* planilha */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:12px}
+.grid6{grid-template-columns:repeat(auto-fit,minmax(110px,1fr))}
+.grid label{font-size:14px;font-weight:600;display:block}
+.grid input{display:block;width:100%;margin-top:5px;padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;font:inherit;font-size:16px}
+.grid input:focus{outline:none;border-color:var(--green)}
+.out{background:var(--green-soft);border-radius:14px;padding:14px 16px;margin:8px 0 6px;font-size:16px}
+.out b{font-family:Lora,serif;font-size:20px}
+.out .warn{color:var(--red);font-weight:700}
+.btn-dl{margin-top:18px;background:var(--ink);color:#fff;border:0;font:inherit;font-weight:700;padding:13px 18px;border-radius:12px;cursor:pointer}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 20px 40px}
+@media (max-width:640px){.panel{padding:22px 16px;border-radius:16px}.panel h1{font-size:26px}.stats{grid-template-columns:1fr}}
+@media print{
+  @page{size:A4;margin:16mm}
+  body{background:#fff;font-size:11pt}
+  .top,.bar,footer,.btn-dl{display:none!important}
+  .panel{border:0;padding:0;margin:0}
+  .panel[hidden]{display:none!important}
+  .chapter{page-break-after:always;border:0}
+  .box,.figure,table,.pillar,.stats{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><svg width="14" height="20" viewBox="0 0 16 22" aria-hidden="true"><rect x="7.2" width="1.6" height="7" fill="#FBF9F4"/><path d="M2 7h12L8 22z" fill="#B8901F"/></svg>Prumo Finanças</div>
+    <p class="hello" id="hello">Sua área de acesso</p>
+    <p class="sub" id="sub">Carregando seu conteúdo…</p>
+    <nav class="tabs" id="tabs" role="tablist" aria-label="Seus materiais"></nav>
+  </div>
+</header>
+<main class="wrap" id="main">
+  <div class="panel state" id="estado"><h2>Carregando…</h2><p class="small">Só um instante.</p></div>
+</main>
+<footer>Conteúdo educacional — não é recomendação de investimento. © 2026 Prumo Finanças.<br>Este link é pessoal: guarde-o para voltar quando quiser. · <a href="privacidade.html">Privacidade</a><br><span data-empresa hidden></span></footer>
+
+<script src="config.js?v=3" defer></script>
+<script src="acesso.js" defer></script>
+</body>
+</html>

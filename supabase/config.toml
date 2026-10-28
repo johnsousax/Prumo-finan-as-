@@ -1,0 +1,17 @@
+# Todas as funções recebem chamadas públicas (site, webhook, cron) e fazem a própria verificação.
+[functions.tombo-checkout]
+verify_jwt = false
+[functions.tombo-webhook]
+verify_jwt = false
+[functions.tombo-status]
+verify_jwt = false
+[functions.tombo-acesso]
+verify_jwt = false
+[functions.tombo-cron]
+verify_jwt = false
+[functions.tombo-prova]
+verify_jwt = false
+[functions.tombo-admin]
+verify_jwt = false
+[functions.tombo-arquivos]
+verify_jwt = false
