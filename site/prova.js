@@ -175,8 +175,8 @@
           vigiarPix();
         }
         if (!d.mostrar) return;
-        if (faixaAgora) faixaAgora.hidden = (Number(d.agora) || 0) < 2;
-        if (outrosLinha) outrosLinha.hidden = (Number(d.agora) || 0) < 2;
+        if (faixaAgora) faixaAgora.hidden = (Number(d.agora) || 0) < 1;
+        if (outrosLinha) outrosLinha.hidden = (Number(d.agora) || 0) < 1;
         if (pessoasTxt) pessoasTxt.textContent = (Number(d.agora) === 2 ? " pessoa está" : " pessoas estão") + " pagando agora";
         if (toast) {
           var antes = fila.length;
