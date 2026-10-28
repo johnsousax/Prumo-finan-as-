@@ -69,7 +69,7 @@
     var nota = document.querySelector(".hero .note");
     if (!nota) return;
     var total = contador("total"), dia = contador("dia");
-    blocoDia = el("span", "", [el("span", "pv-sep", ["·"]), " ", dia, " nas últimas 24h"]);
+    blocoDia = el("span", "", [el("span", "pv-sep", ["·"]), " ", dia, " no site nas últimas 24h"]);
     var bar = el("div", "pv-live", [dot(), el("span", "", [total, pl("total", " leitor já garantiu o guia", " leitores já garantiram o guia")]), blocoDia]);
     bar.setAttribute("role", "status");
     nota.parentNode.insertBefore(bar, nota.nextSibling);
