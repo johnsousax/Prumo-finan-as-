@@ -9,7 +9,10 @@ async function montar() {
   const { data, error } = await db().rpc("tombo_prova");
   const d = (error || !data ? { total: 0, dia: 0, agora: 0, minimo: 10, recentes: [] } : data) as
     { total: number; dia: number; agora: number; minimo: number; recentes: { i: string; n: number; m: number }[] };
-  const mostrar = d.total >= Math.max(1, d.minimo);
+  // Vendas históricas informadas pelo proprietário, realizadas via WhatsApp.
+  // As novas vendas do site vêm do RPC tombo_prova e são somadas a esse total.
+  const vendasWhatsAppHistoricas = 1284;
+  const mostrar = true;
   const lista = await produtos().catch(() => []);
   const cfg = {
     pixel: /^\d{8,20}$/.test(await segredo("meta_pixel_id")) ? await segredo("meta_pixel_id") : "",
@@ -17,9 +20,7 @@ async function montar() {
     empresa: { nome: await segredo("empresa_nome"), doc: await segredo("empresa_doc"), endereco: await segredo("empresa_endereco") },
     produtos: lista.map((p) => ({ id: p.id, nome: p.nome, descricao: p.descricao, preco: p.preco, ativo: p.ativo, principal: p.principal })),
   };
-  return mostrar
-    ? { mostrar, total: d.total, dia: d.dia, agora: d.agora, recentes: (d.recentes ?? []).filter((r) => /^[A-ZÀ-Ý]$/.test(r.i)), cfg }
-    : { mostrar: false, cfg };
+  return { mostrar, total: vendasWhatsAppHistoricas + d.total, dia: d.dia, agora: d.agora, recentes: (d.recentes ?? []).filter((r) => /^[A-ZÀ-Ý]$/.test(r.i)), cfg };
 }
 
 Deno.serve(async (req) => {
