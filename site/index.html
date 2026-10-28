@@ -374,9 +374,23 @@ footer b{color:#FBF9F4}
 
 <div class="sticky"><a class="btn" href="#oferta">Quero o guia por R$ <span data-preco="ebook">29,90</span></a></div>
 
-<script src="config.js?v=3" data-pixel data-visita defer></script>
+<div class="prumo-chat">
+  <button type="button" class="prumo-chat-toggle" id="prumo-chat-toggle" aria-controls="prumo-chat-panel" aria-expanded="false" aria-label="Abrir assistente virtual">
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H6l-3 2v-6.5A7.5 7.5 0 1 1 20 11.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 11h8M8 14h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <span>Fale com a Prumo</span>
+  </button>
+  <section class="prumo-chat-panel" id="prumo-chat-panel" aria-label="Assistente virtual da Prumo Finanças" hidden>
+    <header class="prumo-chat-head"><span class="prumo-chat-status"></span><div><strong>Assistente Prumo</strong><small>Educação financeira</small></div><button type="button" id="prumo-chat-close" aria-label="Fechar chat">×</button></header>
+    <div class="prumo-chat-log" id="prumo-chat-log" role="log" aria-live="polite"></div>
+    <form class="prumo-chat-form" id="prumo-chat-form"><label class="sr-only" for="prumo-chat-input">Digite sua mensagem</label><input id="prumo-chat-input" maxlength="1800" autocomplete="off" placeholder="Digite sua dúvida…" required><button id="prumo-chat-send" type="submit">Enviar</button></form>
+    <p class="prumo-chat-disclaimer">Assistente com IA para dúvidas gerais. Não fornece recomendação individual de investimentos.</p>
+  </section>
+</div>
+
+<script src="config.js?v=4" data-pixel data-visita defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="checkout.js?v=3" defer></script>
-<script src="prova.js?v=3" defer></script>
+<script src="prova.js?v=4" defer></script>
+<script src="chat.js?v=1" defer></script>
 </body>
 </html>
